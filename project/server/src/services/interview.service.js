@@ -1,5 +1,5 @@
 import Interview from '../models/Interview.model.js';
-import { askGemini } from './gemini.services.js';
+import { askAI } from './gemini.services.js';
 import { generateAudio } from './murf.service.js';
 import { parseGeminiJSON } from '../utils/prompts.utils.js';
 import {
@@ -13,7 +13,7 @@ import {
 
 export const startInterview = async (userId, role, resumeText, candidateName, totalQuestions = 5) => {
   const questionsPrompt = GENERATE_QUESTIONS_PROMPT(role, resumeText, totalQuestions);
-  const questionsResponse = await askGemini(questionsPrompt);
+  const questionsResponse = await askAI(questionsPrompt);
   const aiQuestions = parseGeminiJSON(questionsResponse);
 
   const introQuestion = {
@@ -34,7 +34,7 @@ export const startInterview = async (userId, role, resumeText, candidateName, to
   });
 
   const greetingPrompt = INTERVIEW_GREETING_PROMPT(role, candidateName);
-  const greeting = await askGemini(greetingPrompt);
+  const greeting = await askAI(greetingPrompt);
 
   interview.messages.push({
     role: 'interviewer',
@@ -93,7 +93,7 @@ export const submitAnswer = async (interviewId, userId, answerText) => {
   const nextQuestion = interview.questions[nextQuestionIndex];
 
   const followUpPrompt = FOLLOW_UP_PROMPT(interview.role, conversationHistory, nextQuestion.text);
-  const followUpResponse = await askGemini(followUpPrompt);
+  const followUpResponse = await askAI(followUpPrompt);
 
   interview.messages.push({
     role: 'interviewer',
@@ -143,7 +143,7 @@ export const submitCode = async (interviewId, userId, code, language) => {
   const codeType = question.codeType || 'write';
 
   const evalPrompt = EVALUATE_CODE_PROMPT(question.text, code, language, codeType);
-  const evalResponse = await askGemini(evalPrompt);
+  const evalResponse = await askAI(evalPrompt);
   const evaluation = parseGeminiJSON(evalResponse);
 
   interview.codeSubmissions.push({
@@ -181,7 +181,7 @@ export const submitCode = async (interviewId, userId, code, language) => {
   const nextQuestion = interview.questions[nextQuestionIndex];
 
   const followUpPrompt = FOLLOW_UP_PROMPT(interview.role, conversationHistory, nextQuestion.text);
-  const followUpResponse = await askGemini(followUpPrompt);
+  const followUpResponse = await askAI(followUpPrompt);
 
   interview.messages.push({
     role: 'interviewer',
@@ -256,10 +256,10 @@ Evaluation: ${JSON.stringify(sub.evaluation)}`
     codeSubmissionsSummary
   );
 
-  const feedbackResponse = await askGemini(
+  const feedbackResponse = await askAI(
     feedbackPrompt
   );
-console.log('===== GEMINI FEEDBACK =====');
+console.log('===== AI FEEDBACK =====');
 console.log(feedbackResponse);
   const feedback = parseGeminiJSON(
     feedbackResponse
