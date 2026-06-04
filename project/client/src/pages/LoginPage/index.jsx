@@ -82,23 +82,38 @@ function LoginPage() {
 
         {/* Feature pills */}
         <div className="login-hero-features">
-          <div className="login-hero-pill">
-            <BsMicFill className="login-pill-icon" />
-            <span className="login-pill-text">Voice Interviews</span>
-          </div>
-          <div className="login-hero-pill">
-            <BsFileEarmarkTextFill className="login-pill-icon" />
-            <span className="login-pill-text">Resume Analysis</span>
-          </div>
-          <div className="login-hero-pill">
-            <BsCodeSlash className="login-pill-icon" />
-            <span className="login-pill-text">Live Coding</span>
-          </div>
-          <div className="login-hero-pill">
-            <BsBarChartFill className="login-pill-icon" />
-            <span className="login-pill-text">AI Scoring</span>
-          </div>
-        </div>
+    <div className="login-hero-features">
+  <div className="login-hero-pill">
+    <BsMicFill className="login-pill-icon" />
+    <span className="login-pill-text">100+ Interview Questions</span>
+  </div>
+
+  <div className="login-hero-pill">
+    <BsPeopleFill className="login-pill-icon" />
+    <span className="login-pill-text">8+ Technical Roles</span>
+  </div>
+
+  <div className="login-hero-pill">
+    <BsBarChartFill className="login-pill-icon" />
+    <span className="login-pill-text">AI Feedback</span>
+  </div>
+
+  <div className="login-hero-pill">
+    <BsCameraVideo className="login-pill-icon" />
+    <span className="login-pill-text">Voice Interviews</span>
+  </div>
+
+  <div className="login-hero-pill">
+    <BsFileEarmarkTextFill className="login-pill-icon" />
+    <span className="login-pill-text">Resume Analysis</span>
+  </div>
+
+  <div className="login-hero-pill">
+    <BsCodeSlash className="login-pill-icon" />
+    <span className="login-pill-text">Live Coding</span>
+  </div>
+</div>
+</div>
       </div>
 
       {/* ---- Form Card (overlaps hero bottom) ---- */}

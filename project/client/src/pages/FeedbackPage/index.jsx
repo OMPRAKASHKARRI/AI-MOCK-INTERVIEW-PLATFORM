@@ -77,18 +77,34 @@ useEffect(() => {
         </div>
 
         <div className="feedback-overall-section">
-          <div
-            className="feedback-score-circle"
-            style={{ borderColor: getScoreColor(overallScore) }}
-          >
-            <span
-              className="feedback-score-number"
-              style={{ color: getScoreColor(overallScore) }}
-            >
-              {overallScore}
-            </span>
-            <span className="feedback-score-label">/100</span>
-          </div>
+         <div className="feedback-summary-card">
+  <div className="feedback-summary-item">
+    <h3 className="feedback-summary-value">
+      {role}
+    </h3>
+    <p className="feedback-summary-label">
+      Role
+    </p>
+  </div>
+
+  <div className="feedback-summary-item">
+    <h3 className="feedback-summary-value">
+      {interview.totalQuestions}
+    </h3>
+    <p className="feedback-summary-label">
+      Questions
+    </p>
+  </div>
+
+  <div className="feedback-summary-item">
+    <h3 className="feedback-summary-value">
+      {overallScore}
+    </h3>
+    <p className="feedback-summary-label">
+      Score
+    </p>
+  </div>
+</div>
           <h2 className="feedback-overall-title">Overall Score</h2>
         </div>
 
